@@ -31,18 +31,18 @@ import org.opencv.objdetect.CascadeClassifier;
 public class Capture_Screen extends javax.swing.JFrame {
 
     //Components for the Java Open Computer Vision Library
-   private DaemonThread myThread = null;
+    private DaemonThread myThread = null;
     int count = 0;
-    public VideoCapture webSource = null;
+    public VideoCapture webSource = null; //Opens a Video Source
     Mat frame = new Mat();
     MatOfByte mem = new MatOfByte();
-    CascadeClassifier faceDetector = new CascadeClassifier("C:\\haarcascade_frontalface_alt.xml");
+    CascadeClassifier faceDetector = new CascadeClassifier("C:\\haarcascade_frontalface_alt.xml");  //Files to Detect Face
     MatOfRect faceDetections = new MatOfRect();
-///   Rec
-    Rect rect = new Rect(0,0,0,0);
-   Rect rec2=new Rect(0,0,0,0);
-    int c=0;
-    boolean rectconrol = true;
+    Rect rect = new Rect(0,0,0,0); //Rectanbgle inititialized to Capture Face Detections Array
+    Rect rec2=new Rect(0,0,0,0); //Comparison Rectangle to capture Pic when Given Time Passed
+    int c=0; //Counter to count iterations in Seconds
+    boolean rectconrol = true;  //Control used to remove rectangle from Face, one second before pic capture
+    
     /**
      * Creates new form Capture_Screen
      */
@@ -76,9 +76,9 @@ public class Capture_Screen extends javax.swing.JFrame {
                                 faceDetector.detectMultiScale(frame, faceDetections2);
                                 System.out.println("ttt");
                                
-                                 rec2 = new Rect();
+                                rec2 = new Rect();
                                 rec2 =  rect;
-            if (rectconrol==true) {
+                                if (rectconrol==true) {
                                 Core.rectangle(frame, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height),
                                         new Scalar(0, 255,0)); }
             
@@ -95,12 +95,12 @@ public class Capture_Screen extends javax.swing.JFrame {
                                 RenderedImage ri = (RenderedImage) im;
                                 
                                 File outputFile = new File("C:\\Anas\\Image.jpg");
-                            ImageIO.write(ri, "jpg", outputFile);
-                            myThread.runnable = false;            // stop thread
-        stopbutton.setEnabled(false);   // activate start button 
-        startbutton.setEnabled(true);     // deactivate stop button
+                                ImageIO.write(ri, "jpg", outputFile);
+                                myThread.runnable = false;            // stop thread
+                                stopbutton.setEnabled(false);   // activate start button 
+                                startbutton.setEnabled(true);     // deactivate stop button
 
-        webSource.release();
+                                webSource.release();
                                 c=0;}
                             }
                             
@@ -120,7 +120,7 @@ public class Capture_Screen extends javax.swing.JFrame {
                             //File outputFile = new File("C:\\Anas\\Image.png");
                             //ImageIO.write(ri, "png", outputFile);
                             
-                           if (g.drawImage(buff, 0, 0, getWidth(), getHeight()-150 , 0, 0, buff.getWidth(), buff.getHeight(), null)) {
+                            if (g.drawImage(buff, 0, 0, getWidth(), getHeight()-150 , 0, 0, buff.getWidth(), buff.getHeight(), null)) {
                                                                
  
                                if (runnable == false) {
@@ -131,7 +131,7 @@ public class Capture_Screen extends javax.swing.JFrame {
                            }
                         
                         }  
-                         catch (Exception ex) {
+                            catch (Exception ex) {
                             System.out.println("Error!!");
                             ex.printStackTrace();
                         } 

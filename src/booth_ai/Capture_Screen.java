@@ -36,7 +36,10 @@ public class Capture_Screen extends javax.swing.JFrame {
     public VideoCapture webSource = null; //Opens a Video Source
     Mat frame = new Mat();
     MatOfByte mem = new MatOfByte();
-    CascadeClassifier faceDetector = new CascadeClassifier("C:\\haarcascade_frontalface_alt.xml");  //Files to Detect Face
+   
+   
+   // CascadeClassifier faceDetector = new CascadeClassifier(Capture_Screen.class.getResource("haarcascade_frontalface_alt.xml").getPath().substring(1));  //Files to Detect Face
+    CascadeClassifier faceDetector = new CascadeClassifier("C:\\lbpcascade_frontalface.xml");
     MatOfRect faceDetections = new MatOfRect();
     Rect rect = new Rect(0,0,0,0); //Rectanbgle inititialized to Capture Face Detections Array
     Rect rec2=new Rect(0,0,0,0); //Comparison Rectangle to capture Pic when Given Time Passed
@@ -73,7 +76,7 @@ public class Capture_Screen extends javax.swing.JFrame {
                           
                             for ( Rect rect : faceDetections.toArray()) {
                                 MatOfRect faceDetections2 = new MatOfRect();
-                                faceDetector.detectMultiScale(frame, faceDetections2);
+                                //faceDetector.detectMultiScale(frame, faceDetections2);
                                 System.out.println("ttt");
                                
                                 rec2 = new Rect();
@@ -113,7 +116,7 @@ public class Capture_Screen extends javax.swing.JFrame {
                                 else {
                                     c=0;
                                 }
-                            Highgui.imencode(".bmp", frame, mem);
+                            Highgui.imencode(".jpg", frame, mem);
                             Image im = ImageIO.read(new ByteArrayInputStream(mem.toArray()));
                             //RenderedImage ri = (RenderedImage) im;
                             BufferedImage buff = (BufferedImage) im;

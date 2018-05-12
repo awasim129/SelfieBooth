@@ -39,7 +39,7 @@ public class Capture_Screen extends javax.swing.JFrame {
    
    
    // CascadeClassifier faceDetector = new CascadeClassifier(Capture_Screen.class.getResource("haarcascade_frontalface_alt.xml").getPath().substring(1));  //Files to Detect Face
-    CascadeClassifier faceDetector = new CascadeClassifier("C:\\lbpcascade_frontalface.xml");
+    CascadeClassifier faceDetector = new CascadeClassifier("/home/xterminate/cascades/lbpcascade_frontalface.xml");
     MatOfRect faceDetections = new MatOfRect();
     Rect rect = new Rect(0,0,0,0); //Rectanbgle inititialized to Capture Face Detections Array
     Rect rec2=new Rect(0,0,0,0); //Comparison Rectangle to capture Pic when Given Time Passed
@@ -97,12 +97,12 @@ public class Capture_Screen extends javax.swing.JFrame {
                                     Image im = ImageIO.read(new ByteArrayInputStream(mem.toArray()));
                                 RenderedImage ri = (RenderedImage) im;
                                 
-                                File outputFile = new File("C:\\Anas\\Image.jpg");
+                                File outputFile = new File("/home/xterminate/project/output/Image.jpg");
                                 ImageIO.write(ri, "jpg", outputFile);
                                 myThread.runnable = false;            // stop thread
                                 stopbutton.setEnabled(false);   // activate start button 
                                 startbutton.setEnabled(true);     // deactivate stop button
-
+                                rectconrol = true;
                                 webSource.release();
                                 c=0;}
                             }

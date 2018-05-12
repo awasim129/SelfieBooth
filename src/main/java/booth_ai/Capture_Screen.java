@@ -48,7 +48,7 @@ public class Capture_Screen extends javax.swing.JFrame {
    
    
    // CascadeClassifier faceDetector = new CascadeClassifier(Capture_Screen.class.getResource("haarcascade_frontalface_alt.xml").getPath().substring(1));  //Files to Detect Face
-    CascadeClassifier faceDetector = new CascadeClassifier("C:\\lbpcascade_frontalface.xml");
+    CascadeClassifier faceDetector = new CascadeClassifier("/home/xterminate/cascades/lbpcascade_frontalface.xml");
     MatOfRect faceDetections = new MatOfRect();
     Rect rect = new Rect(0,0,0,0); //Rectanbgle inititialized to Capture Face Detections Array
     Rect rec2=new Rect(0,0,0,0); //Comparison Rectangle to capture Pic when Given Time Passed
@@ -107,14 +107,26 @@ public class Capture_Screen extends javax.swing.JFrame {
                                     Image im = ImageIO.read(new ByteArrayInputStream(mem.toArray()));
                                 RenderedImage ri = (RenderedImage) im;
                                 
-                                File outputFile = new File("C:\\Anas\\Image.jpg");
+                                File outputFile = new File("/home/xterminate/project/output.Image.jpg");
                                 ImageIO.write(ri, "jpg", outputFile);
                                 myThread.runnable = false;            // stop thread
                                 stopbutton.setEnabled(false);   // activate start button 
                                 startbutton.setEnabled(true);     // deactivate stop button
                                 rectconrol=true;
                                 webSource.release();
-                                c=0;}
+                                c=0;
+                                
+                                Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
+  "cloud_name", "selfiebooth",
+  "api_key", "416569729327625",
+  "api_secret", "ovi36WylyxP8R_M88QGKFLJl3fM"));
+                                  //  System.out.println(cloudinary.url().transformation(new Transformation().effect("sepia")).imageTag("test.jpg"));
+                      Map result = cloudinary.uploader().upload(new File("/home/xterminate/project/output.Image.jpg"), ObjectUtils.asMap(
+  "transformation", new Transformation().effect("sepia"),"tags", "special, for_homepage"));
+  
+
+                                  System.out.println("Success");
+                                }
                             }
                             
                             System.out.println("Rect AF "+rec2.x);
@@ -246,6 +258,7 @@ public class Capture_Screen extends javax.swing.JFrame {
         t.start();                 //start thrad
         stopbutton.setEnabled(false);  // deactivate start button
         startbutton.setEnabled(true);  //  activate stop button
+        
 
     }//GEN-LAST:event_stopbuttonActionPerformed
                         
@@ -283,23 +296,8 @@ public class Capture_Screen extends javax.swing.JFrame {
             public void run() {
                 new Capture_Screen().setVisible(true);
                 
-                Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
-  "cloud_name", "selfiebooth",
-  "api_key", "416569729327625",
-  "api_secret", "ovi36WylyxP8R_M88QGKFLJl3fM"));
-    
-                try {
-                    Map result = cloudinary.uploader().upload(new File("C:\\Anas\\Anas.png"), ObjectUtils.asMap(
-                            "public_id", "anas",
-                            
-                           "eager", Arrays.asList(
-                                    new Transformation().effect("art:audrey")
-                            ),
-                            "tags", "special, for_homepage"));
-                    System.out.println("Success");
-                } catch (IOException ex) {
-                    Logger.getLogger(Capture_Screen.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                
+              
             }
         });
     }

@@ -116,10 +116,7 @@ public class Capture_Screen extends javax.swing.JFrame {
                                 webSource.release();
                                 c=0;
                                 
-                                CloudinaryAPI effects = new CloudinaryAPI();
-                                  
-                      Map result = effects.access.uploader().upload(new File("/home/xterminate/project/output/Image.jpg"), ObjectUtils.asMap(
-  "transformation", new Transformation().effect("sepia"),"tags", "anas"));
+                                
   
 
                                   System.out.println("Success");

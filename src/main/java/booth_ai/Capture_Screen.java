@@ -180,6 +180,7 @@ public class Capture_Screen extends javax.swing.JFrame {
         stopbutton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1275, 1020));
 
         camera.setBackground(new java.awt.Color(0, 0, 0));
         camera.setMaximumSize(new java.awt.Dimension(1366, 768));

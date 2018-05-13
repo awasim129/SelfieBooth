@@ -9,6 +9,8 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -26,22 +28,39 @@ public class Effects extends javax.swing.JFrame {
      */
     public Effects() {
         initComponents();
-        
-
-        System.out.println("I should reach here");
+        imgLoader();
+        System.out.println(System.getenv("GMAIL_USER"));
+       }
+    
+    public void imgLoader() {
         BufferedImage img = null;
-try {
-    img = ImageIO.read(new File("/home/xterminate/project/output/Image.jpg"));
-} catch (IOException e) {
-    e.printStackTrace();
-}
-Image dimg = img.getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(),
+        try {
+            img = ImageIO.read(new File("/home/xterminate/project/output/Image.jpg"));
+            } catch (IOException e) {
+                    e.printStackTrace();
+                                    }
+        Image dimg = img.getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(),
         Image.SCALE_SMOOTH);
 
-ImageIcon imgThisImg = new ImageIcon(dimg);
-jLabel1.setIcon(imgThisImg);
-            
+        ImageIcon imgThisImg = new ImageIcon(dimg);
+        jLabel1.setIcon(imgThisImg);
+      //  jLabel1.setLocation(500, 500);
+    }
     
+    public void usbcopy() {
+        String[] env = {"PATH=/bin:/usr/bin/"};
+        String cmd = "sudo /home/xterminate/project/testing/usbcpy.sh";  //e.g test.sh -dparam1 -oout.txt
+        try {
+            Process process = Runtime.getRuntime().exec(cmd, env);
+        } catch (IOException ex) {
+            Logger.getLogger(Effects.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void emailservice() {
+        JFrame frame = new JFrame("Please Provide your Email");
+        String email = JOptionPane.showInputDialog(frame, "What's your Email?");
+        SendEmailWithAttachment.sendmail(email);
     }
 
     
@@ -57,10 +76,10 @@ jLabel1.setIcon(imgThisImg);
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        applyeffect = new javax.swing.JButton();
+        usbcpy = new javax.swing.JButton();
+        email = new javax.swing.JButton();
+        mm = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(15, 20));
@@ -68,23 +87,28 @@ jLabel1.setIcon(imgThisImg);
 
         jLabel1.setText("jLabel1");
 
-        jButton1.setText("Add Effects");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        applyeffect.setText("Add Effects");
+        applyeffect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                applyeffectActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Copy to USB");
-
-        jButton3.setText("Email Picture");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        usbcpy.setText("Copy to USB");
+        usbcpy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                usbcpyActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Main Menu");
+        email.setText("Email Picture");
+        email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailActionPerformed(evt);
+            }
+        });
+
+        mm.setText("Main Menu");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,14 +118,14 @@ jLabel1.setIcon(imgThisImg);
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(applyeffect, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(175, 175, 175))
+                        .addComponent(usbcpy, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(mm, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(267, 267, 267))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 932, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -112,28 +136,29 @@ jLabel1.setIcon(imgThisImg);
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(applyeffect, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usbcpy, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mm, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        JFrame frame = new JFrame("Please Provide your Email");
-        String email = JOptionPane.showInputDialog(frame, "What's your Email?");
-        SendEmailWithAttachment.sendmail(email);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
+        emailservice();
+    }//GEN-LAST:event_emailActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void applyeffectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyeffectActionPerformed
         this.setVisible(false);
         new EffectsApply().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_applyeffectActionPerformed
+
+    private void usbcpyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usbcpyActionPerformed
+        usbcopy();
+    }//GEN-LAST:event_usbcpyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,10 +197,10 @@ jLabel1.setIcon(imgThisImg);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton applyeffect;
+    private javax.swing.JButton email;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton mm;
+    private javax.swing.JButton usbcpy;
     // End of variables declaration//GEN-END:variables
 }

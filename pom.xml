@@ -27,5 +27,6 @@
     <version>1.5.0-b01</version>
 </dependency>
 </dependencies>
-    
+    <name>Selfie Booth</name>
+    <description>An Automated Selfie Booth Program written in Java Maven. Uses Java Open Computer Vision Library to recognize faces. You can also add effects to the captured Image or email it to yourself.</description>
 </project>

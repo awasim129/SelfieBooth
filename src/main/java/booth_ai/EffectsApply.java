@@ -17,25 +17,31 @@ import javax.swing.ImageIcon;
  * @author xterminate
  */
 public class EffectsApply extends javax.swing.JFrame {
-
+    
+    public static String imgurl = "/home/xterminate/project/output/Image.jpg";
     /**
      * Creates new form EffectsApply
      */
     public EffectsApply() {
         initComponents();
-        BufferedImage img = null;
-try {
-    img = ImageIO.read(new File("/home/xterminate/project/output/Image.jpg"));
-} catch (IOException e) {
-    e.printStackTrace();
-}
-Image dimg = img.getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(),
-        Image.SCALE_SMOOTH);
-
-ImageIcon imgThisImg = new ImageIcon(dimg);
-jLabel1.setIcon(imgThisImg);
+        imgLoader();
+        
     }
 
+    public void imgLoader() {
+        BufferedImage img = null;
+        try {
+        img = ImageIO.read(new File(imgurl));
+            } catch (IOException e) {
+                e.printStackTrace();
+                        }
+        Image dimg = img.getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(),
+        Image.SCALE_SMOOTH);
+
+        ImageIcon imgThisImg = new ImageIcon(dimg);
+        jLabel1.setIcon(imgThisImg);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

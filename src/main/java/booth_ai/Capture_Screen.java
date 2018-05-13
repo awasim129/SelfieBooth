@@ -107,7 +107,7 @@ public class Capture_Screen extends javax.swing.JFrame {
                                     Image im = ImageIO.read(new ByteArrayInputStream(mem.toArray()));
                                 RenderedImage ri = (RenderedImage) im;
                                 
-                                File outputFile = new File("/home/xterminate/project/output.Image.jpg");
+                                File outputFile = new File("/home/xterminate/project/output/Image.jpg");
                                 ImageIO.write(ri, "jpg", outputFile);
                                 myThread.runnable = false;            // stop thread
                                 stopbutton.setEnabled(false);   // activate start button 
@@ -116,13 +116,10 @@ public class Capture_Screen extends javax.swing.JFrame {
                                 webSource.release();
                                 c=0;
                                 
-                                Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
-  "cloud_name", "selfiebooth",
-  "api_key", "416569729327625",
-  "api_secret", "ovi36WylyxP8R_M88QGKFLJl3fM"));
-                                  //  System.out.println(cloudinary.url().transformation(new Transformation().effect("sepia")).imageTag("test.jpg"));
-                      Map result = cloudinary.uploader().upload(new File("/home/xterminate/project/output.Image.jpg"), ObjectUtils.asMap(
-  "transformation", new Transformation().effect("sepia"),"tags", "special, for_homepage"));
+                                CloudinaryAPI effects = new CloudinaryAPI();
+                                  
+                      Map result = effects.access.uploader().upload(new File("/home/xterminate/project/output/Image.jpg"), ObjectUtils.asMap(
+  "transformation", new Transformation().effect("sepia"),"tags", "anas"));
   
 
                                   System.out.println("Success");

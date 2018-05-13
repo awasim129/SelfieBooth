@@ -15,4 +15,8 @@ import java.util.Map;
  */
 public class CloudinaryAPI {
     
+    public Cloudinary access = new Cloudinary(ObjectUtils.asMap("cloud_name", "selfiebooth","api_key", "416569729327625",
+                                                                            "api_secret", "ovi36WylyxP8R_M88QGKFLJl3fM"));
+    
+    
 } 

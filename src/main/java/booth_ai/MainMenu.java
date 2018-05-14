@@ -27,20 +27,21 @@ import javax.swing.ImageIcon;
  *
  * @author xterminate
  */
-public class home extends javax.swing.JFrame {
+public class MainMenu extends javax.swing.JFrame {
 
+    public static String cascade;
     /**
-     * Creates new form home
+     * Creates new form MainMenu
      */
-    public home() {
+    public MainMenu() {
         initComponents();
         imgLoader();
+        imgLoader2();
     }
-    
     public void imgLoader() {
         BufferedImage img = null;
         try {
-            img = ImageIO.read(new File("/home/xterminate/project/testing/SelfieBooth/media/Continue.png"));
+            img = ImageIO.read(new File("/home/xterminate/project/testing/SelfieBooth/media/face-recognition.png"));
             } catch (IOException e) {
                     e.printStackTrace();
                                     }
@@ -51,7 +52,20 @@ public class home extends javax.swing.JFrame {
         jButton2.setIcon(imgThisImg);
       //  jLabel1.setLocation(500, 500);
     }
+public void imgLoader2() {
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File("/home/xterminate/project/testing/SelfieBooth/media/Smile-recognition.png"));
+            } catch (IOException e) {
+                    e.printStackTrace();
+                                    }
+        Image dimg = img.getScaledInstance(jButton3.getWidth()+300, jButton3.getHeight()+300,
+        Image.SCALE_SMOOTH);
 
+        ImageIcon imgThisImg = new ImageIcon(dimg);
+        jButton3.setIcon(imgThisImg);
+      //  jLabel1.setLocation(500, 500);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -62,14 +76,15 @@ public class home extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton2 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1270, 980));
+        setMinimumSize(new java.awt.Dimension(1270, 960));
         getContentPane().setLayout(null);
 
-        jButton2.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
-        jButton2.setText("CONTINUE");
+        jButton2.setIcon(new javax.swing.ImageIcon("/home/xterminate/project/testing/SelfieBooth/media/face-recognition.png")); // NOI18N
+        jButton2.setLabel("continue");
         jButton2.setMaximumSize(new java.awt.Dimension(250, 40));
         jButton2.setMinimumSize(new java.awt.Dimension(250, 40));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -78,21 +93,39 @@ public class home extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(540, 510, 210, 40);
+        jButton2.setBounds(530, 310, 210, 40);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("/home/xterminate/project/testing/SelfieBooth/media/home.jpg")); // NOI18N
-        jLabel2.setText("home");
-        jLabel2.setMinimumSize(new java.awt.Dimension(1313, 1023));
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 1280, 1000);
+        jButton3.setIcon(new javax.swing.ImageIcon("/home/xterminate/project/testing/SelfieBooth/media/Smile-recognition.png")); // NOI18N
+        jButton3.setText("Smile Recognition");
+        jButton3.setMaximumSize(new java.awt.Dimension(250, 40));
+        jButton3.setMinimumSize(new java.awt.Dimension(250, 40));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(530, 400, 210, 40);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("/home/xterminate/project/testing/SelfieBooth/media/mainmenu.jpg")); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1330, 1020);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        cascade = "/home/xterminate/cascades/lbpcascade_frontalface.xml";
         this.setVisible(false);
-        new MainMenu().setVisible(true);
+        new Capture_Screen().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        cascade = "/home/xterminate/cascades/haarcascade_smile.xml";
+        this.setVisible(false);
+        new Effects().setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,26 +144,27 @@ public class home extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new home().setVisible(true);
+                new MainMenu().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

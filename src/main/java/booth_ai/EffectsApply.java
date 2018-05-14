@@ -29,7 +29,7 @@ import javax.swing.ImageIcon;
  */
 public class EffectsApply extends javax.swing.JFrame {
     
-    public static String imgurl = "C:\\Anas\\Image.jpg";
+    public static String imgurl = "/home/xterminate/project/output/Image.jpg";
     public static String returnurl;
     public static String urll;
     /**
@@ -88,7 +88,7 @@ while (-1!=(n=in.read(buf)))
 out.close();
 in.close();
 byte[] response = out.toByteArray();
-FileOutputStream fos = new FileOutputStream("C:\\Anas\\Image.jpg");
+FileOutputStream fos = new FileOutputStream("/home/xterminate/project/output/Image.jpg");
 fos.write(response);
 fos.close();
         } catch (MalformedURLException ex) {
@@ -107,7 +107,7 @@ fos.close();
         try {
             //Map result = effects.access.uploader().upload(new File("/home/xterminate/project/output/Image.jpg"), ObjectUtils.asMap(
               //      "transformation", new Transformation().effect("art:zorro")));
-            File toUpload = new File("C:\\Anas\\Image.jpg");
+            File toUpload = new File("/home/xterminate/project/output/Image.jpg");
 Map  uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.emptyMap());
             System.out.println(uploadResult);
             String tag = uploadResult.get("public_id").toString();
@@ -140,89 +140,77 @@ Map  uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.empty
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         sepia = new javax.swing.JButton();
         redrock = new javax.swing.JButton();
         incognito = new javax.swing.JButton();
         SaveButton = new javax.swing.JButton();
         primavera = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1275, 960));
         setSize(new java.awt.Dimension(1275, 1020));
+        getContentPane().setLayout(null);
 
-        jLabel1.setText("jLabel1");
-
+        sepia.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         sepia.setText("Sepia");
         sepia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sepiaActionPerformed(evt);
             }
         });
+        getContentPane().add(sepia);
+        sepia.setBounds(310, 740, 150, 57);
 
+        redrock.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         redrock.setText("Red Rock");
         redrock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 redrockActionPerformed(evt);
             }
         });
+        getContentPane().add(redrock);
+        redrock.setBounds(530, 740, 160, 57);
 
+        incognito.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         incognito.setText("Incognito");
         incognito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 incognitoActionPerformed(evt);
             }
         });
+        getContentPane().add(incognito);
+        incognito.setBounds(750, 740, 170, 57);
 
+        SaveButton.setFont(new java.awt.Font("Purisa", 1, 18)); // NOI18N
         SaveButton.setText("Save");
         SaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SaveButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(SaveButton);
+        SaveButton.setBounds(560, 910, 101, 30);
 
+        primavera.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         primavera.setText("Primavera");
         primavera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 primaveraActionPerformed(evt);
             }
         });
+        getContentPane().add(primavera);
+        primavera.setBounds(530, 820, 160, 60);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(sepia, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addComponent(redrock, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73)
-                .addComponent(incognito, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
-                .addComponent(primavera, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
-                .addComponent(SaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sepia, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(primavera, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(incognito, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(redrock, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(155, 155, 155))
-        );
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(340, 270, 600, 420);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("/home/xterminate/project/testing/SelfieBooth/media/effect.png")); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 1240, 1000);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -288,6 +276,7 @@ Map  uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.empty
     private javax.swing.JButton SaveButton;
     private javax.swing.JButton incognito;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton primavera;
     private javax.swing.JButton redrock;
     private javax.swing.JButton sepia;

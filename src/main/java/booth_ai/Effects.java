@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -30,6 +31,7 @@ public class Effects extends javax.swing.JFrame {
         initComponents();
         imgLoader();
         System.out.println(System.getenv("GMAIL_USER"));
+        
        }
     
     public void imgLoader() {
@@ -46,6 +48,7 @@ public class Effects extends javax.swing.JFrame {
         jLabel1.setIcon(imgThisImg);
       //  jLabel1.setLocation(500, 500);
     }
+    
     
     public void usbcopy() {
         String[] env = {"PATH=/bin:/usr/bin/"};
@@ -80,12 +83,20 @@ public class Effects extends javax.swing.JFrame {
         usbcpy = new javax.swing.JButton();
         email = new javax.swing.JButton();
         mm = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(15, 20));
         setMinimumSize(new java.awt.Dimension(1275, 1020));
+        getContentPane().setLayout(null);
 
         jLabel1.setText("jLabel1");
+        jLabel1.setAlignmentX(0.4F);
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 51, 51)));
+        jLabel1.setMaximumSize(new java.awt.Dimension(70, 15));
+        jLabel1.setMinimumSize(new java.awt.Dimension(70, 15));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(330, 310, 630, 450);
 
         applyeffect.setText("Add Effects");
         applyeffect.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +104,8 @@ public class Effects extends javax.swing.JFrame {
                 applyeffectActionPerformed(evt);
             }
         });
+        getContentPane().add(applyeffect);
+        applyeffect.setBounds(390, 790, 130, 65);
 
         usbcpy.setText("Copy to USB");
         usbcpy.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +113,8 @@ public class Effects extends javax.swing.JFrame {
                 usbcpyActionPerformed(evt);
             }
         });
+        getContentPane().add(usbcpy);
+        usbcpy.setBounds(790, 790, 140, 65);
 
         email.setText("Email Picture");
         email.addActionListener(new java.awt.event.ActionListener() {
@@ -107,42 +122,17 @@ public class Effects extends javax.swing.JFrame {
                 emailActionPerformed(evt);
             }
         });
+        getContentPane().add(email);
+        email.setBounds(390, 870, 130, 65);
 
         mm.setText("Main Menu");
+        getContentPane().add(mm);
+        mm.setBounds(790, 870, 140, 65);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(applyeffect, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(usbcpy, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(mm, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(267, 267, 267))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 932, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(applyeffect, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usbcpy, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mm, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(49, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon("/home/xterminate/project/testing/SelfieBooth/media/perform.jpg")); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 1270, 1010);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -151,14 +141,14 @@ public class Effects extends javax.swing.JFrame {
         emailservice();
     }//GEN-LAST:event_emailActionPerformed
 
+    private void usbcpyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usbcpyActionPerformed
+        usbcopy();
+    }//GEN-LAST:event_usbcpyActionPerformed
+
     private void applyeffectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyeffectActionPerformed
         this.setVisible(false);
         new EffectsApply().setVisible(true);
     }//GEN-LAST:event_applyeffectActionPerformed
-
-    private void usbcpyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usbcpyActionPerformed
-        usbcopy();
-    }//GEN-LAST:event_usbcpyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,6 +190,7 @@ public class Effects extends javax.swing.JFrame {
     private javax.swing.JButton applyeffect;
     private javax.swing.JButton email;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton mm;
     private javax.swing.JButton usbcpy;
     // End of variables declaration//GEN-END:variables

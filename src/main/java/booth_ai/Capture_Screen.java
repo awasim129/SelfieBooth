@@ -48,7 +48,7 @@ public class Capture_Screen extends javax.swing.JFrame {
    
    
    // CascadeClassifier faceDetector = new CascadeClassifier(Capture_Screen.class.getResource("haarcascade_frontalface_alt.xml").getPath().substring(1));  //Files to Detect Face
-    CascadeClassifier faceDetector = new CascadeClassifier("/home/xterminate/cascades/lbpcascade_frontalface.xml");
+    CascadeClassifier faceDetector = new CascadeClassifier(MainMenu.cascade);
     MatOfRect faceDetections = new MatOfRect();
     Rect rect = new Rect(0,0,0,0); //Rectanbgle inititialized to Capture Face Detections Array
     Rect rec2=new Rect(0,0,0,0); //Comparison Rectangle to capture Pic when Given Time Passed
@@ -60,6 +60,23 @@ public class Capture_Screen extends javax.swing.JFrame {
      */
     public Capture_Screen() {
         initComponents();
+        start();
+    }
+    
+    public void start() {
+        webSource = new VideoCapture(0); // video capture from default cam
+        myThread = new DaemonThread(); //create object of threat class
+        Thread t = new Thread(myThread);
+        t.setDaemon(true);
+        myThread.runnable = true;
+        t.start();                 //start thrad
+        startbutton.setEnabled(false);  // deactivate start button
+        stopbutton.setEnabled(true);  //  activate stop button
+    }
+    
+    public void newfunc() {
+        this.setVisible(false);
+        new Effects().setVisible(true);
     }
     
     class DaemonThread implements Runnable {
@@ -120,6 +137,7 @@ public class Capture_Screen extends javax.swing.JFrame {
   
 
                                   System.out.println("Success");
+                                  newfunc();
                                 }
                             }
                             
@@ -146,6 +164,7 @@ public class Capture_Screen extends javax.swing.JFrame {
                                  
                                     System.out.println("Paused ..... ");
                                     this.wait();
+                                    
                                 }
                            }
                         
@@ -234,14 +253,7 @@ public class Capture_Screen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startbuttonActionPerformed
-    webSource = new VideoCapture(0); // video capture from default cam
-        myThread = new DaemonThread(); //create object of threat class
-        Thread t = new Thread(myThread);
-        t.setDaemon(true);
-        myThread.runnable = true;
-        t.start();                 //start thrad
-        startbutton.setEnabled(false);  // deactivate start button
-        stopbutton.setEnabled(true);  //  activate stop button
+    
     }//GEN-LAST:event_startbuttonActionPerformed
 
     private void stopbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopbuttonActionPerformed

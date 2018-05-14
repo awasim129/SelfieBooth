@@ -9,8 +9,14 @@ import com.cloudinary.Transformation;
 import com.cloudinary.utils.ObjectUtils;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,8 +29,9 @@ import javax.swing.ImageIcon;
  */
 public class EffectsApply extends javax.swing.JFrame {
     
-    public static String imgurl = "/home/xterminate/project/output/Image.jpg";
+    public static String imgurl = "C:\\Anas\\Image.jpg";
     public static String returnurl;
+    public static String urll;
     /**
      * Creates new form EffectsApply
      */
@@ -48,22 +55,77 @@ public class EffectsApply extends javax.swing.JFrame {
         jLabel1.setIcon(imgThisImg);
     }
     
+    public void urldisp(){
+        URL url;
+        try {
+            url = new URL(urll);
+            Image image = ImageIO.read(url);
+            Image dimg = image.getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(),
+        Image.SCALE_SMOOTH);
+
+        ImageIcon imgThisImg = new ImageIcon(dimg);
+        jLabel1.setIcon(imgThisImg);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(EffectsApply.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(EffectsApply.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+ 
+    }
+    public void save() {
+         URL url;
+        try {
+            url = new URL(urll);
+            InputStream in = new BufferedInputStream(url.openStream());
+           ByteArrayOutputStream out = new ByteArrayOutputStream();
+byte[] buf = new byte[1024];
+int n = 0;
+while (-1!=(n=in.read(buf)))
+{
+   out.write(buf, 0, n);
+}
+out.close();
+in.close();
+byte[] response = out.toByteArray();
+FileOutputStream fos = new FileOutputStream("C:\\Anas\\Image.jpg");
+fos.write(response);
+fos.close();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(EffectsApply.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+         catch (IOException ex) {
+            Logger.getLogger(EffectsApply.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
     public void convert_to(String filter)  {
         CloudinaryAPI effects = new CloudinaryAPI();
                                   
         try {
-          //  Map result = effects.access.uploader().upload(new File("/home/xterminate/project/output/Image.jpg"), ObjectUtils.asMap(
-         //           "transformation", new Transformation().effect("art:zorro"),"imageTag", "anas72.jpg"));
-            File toUpload = new File("/home/xterminate/project/output/Image.jpg");
-            Map uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.emptyMap());
+            //Map result = effects.access.uploader().upload(new File("/home/xterminate/project/output/Image.jpg"), ObjectUtils.asMap(
+              //      "transformation", new Transformation().effect("art:zorro")));
+            File toUpload = new File("C:\\Anas\\Image.jpg");
+Map  uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.emptyMap());
+            System.out.println(uploadResult);
+            String tag = uploadResult.get("public_id").toString();
+            returnurl = effects.access.url()
+  .transformation(new Transformation().effect(filter))
+  .generate(tag+".jpg");
+                      System.out.println(returnurl);
+                      urll = returnurl;
+                      urldisp();
+
+            
+            
         } catch (IOException ex) {
             Logger.getLogger(EffectsApply.class.getName()).log(Level.SEVERE, null, ex);
         }
                       
 
-                      returnurl = effects.access.url().transformation(new Transformation().effect("art:zorro")).imageTag("Image.jpg");
-                      System.out.println(returnurl);
-
+                      
 
     }
     
@@ -80,10 +142,10 @@ public class EffectsApply extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         sepia = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        redrock = new javax.swing.JButton();
+        incognito = new javax.swing.JButton();
+        SaveButton = new javax.swing.JButton();
+        primavera = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1275, 960));
@@ -98,13 +160,33 @@ public class EffectsApply extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Grayscale");
+        redrock.setText("Red Rock");
+        redrock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                redrockActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("jButton1");
+        incognito.setText("Incognito");
+        incognito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                incognitoActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("jButton1");
+        SaveButton.setText("Save");
+        SaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveButtonActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("jButton1");
+        primavera.setText("Primavera");
+        primavera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                primaveraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,13 +200,13 @@ public class EffectsApply extends javax.swing.JFrame {
                 .addGap(53, 53, 53)
                 .addComponent(sepia, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(redrock, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(incognito, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(primavera, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -135,10 +217,10 @@ public class EffectsApply extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sepia, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(primavera, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(incognito, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(redrock, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(155, 155, 155))
         );
 
@@ -148,6 +230,24 @@ public class EffectsApply extends javax.swing.JFrame {
     private void sepiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sepiaActionPerformed
         convert_to("sepia");
     }//GEN-LAST:event_sepiaActionPerformed
+
+    private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
+        save();
+        this.setVisible(false);
+        new Effects().setVisible(true);
+    }//GEN-LAST:event_SaveButtonActionPerformed
+
+    private void redrockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redrockActionPerformed
+        convert_to("e_art:red_rock");
+    }//GEN-LAST:event_redrockActionPerformed
+
+    private void incognitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incognitoActionPerformed
+        convert_to("e_art:incognito");
+    }//GEN-LAST:event_incognitoActionPerformed
+
+    private void primaveraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primaveraActionPerformed
+        convert_to("e_art:primavera");
+    }//GEN-LAST:event_primaveraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,11 +285,11 @@ public class EffectsApply extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton SaveButton;
+    private javax.swing.JButton incognito;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton primavera;
+    private javax.swing.JButton redrock;
     private javax.swing.JButton sepia;
     // End of variables declaration//GEN-END:variables
 }

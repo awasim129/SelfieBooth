@@ -38,13 +38,13 @@
               <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               <Component id="sepia" min="-2" pref="101" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-              <Component id="jButton2" min="-2" pref="101" max="-2" attributes="0"/>
+              <Component id="redrock" min="-2" pref="101" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-              <Component id="jButton3" min="-2" pref="101" max="-2" attributes="0"/>
+              <Component id="incognito" min="-2" pref="101" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-              <Component id="jButton5" min="-2" pref="101" max="-2" attributes="0"/>
+              <Component id="primavera" min="-2" pref="101" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-              <Component id="jButton4" min="-2" pref="101" max="-2" attributes="0"/>
+              <Component id="SaveButton" min="-2" pref="101" max="-2" attributes="0"/>
               <EmptySpace pref="71" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -57,10 +57,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="sepia" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
-                  <Component id="jButton4" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
-                  <Component id="jButton5" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
-                  <Component id="jButton3" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
+                  <Component id="SaveButton" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
+                  <Component id="primavera" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
+                  <Component id="incognito" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
+                  <Component id="redrock" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
           </Group>
@@ -81,25 +81,37 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sepiaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="redrock">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Grayscale"/>
+        <Property name="text" type="java.lang.String" value="Red Rock"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="redrockActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="incognito">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
+        <Property name="text" type="java.lang.String" value="Incognito"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="incognitoActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="SaveButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
+        <Property name="text" type="java.lang.String" value="Save"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SaveButtonActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton5">
+    <Component class="javax.swing.JButton" name="primavera">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
+        <Property name="text" type="java.lang.String" value="Primavera"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="primaveraActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

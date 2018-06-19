@@ -16,6 +16,7 @@
  */
 package booth_ai;
 
+import static booth_ai.FullScreen.graphicsDevice;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -35,10 +36,11 @@ public class MainMenu extends javax.swing.JFrame {
      */
     public MainMenu() {
         initComponents();
-        imgLoader();
-        imgLoader2();
+       FullScreen.show();
+       graphicsDevice.setFullScreenWindow(this);
+       jLabel1.setSize(FullScreen.screenSize);
     }
-    public void imgLoader() {
+   /* public void imgLoader() {
         BufferedImage img = null;
         try {
             img = ImageIO.read(new File("/home/xterminate/project/testing/SelfieBooth/media/face-recognition.png"));
@@ -65,7 +67,7 @@ public void imgLoader2() {
         ImageIcon imgThisImg = new ImageIcon(dimg);
         jButton3.setIcon(imgThisImg);
       //  jLabel1.setLocation(500, 500);
-    }
+    } */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -83,8 +85,8 @@ public void imgLoader2() {
         setMinimumSize(new java.awt.Dimension(1270, 960));
         getContentPane().setLayout(null);
 
-        jButton2.setIcon(new javax.swing.ImageIcon("/home/xterminate/project/testing/SelfieBooth/media/face-recognition.png")); // NOI18N
-        jButton2.setLabel("continue");
+        jButton2.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
+        jButton2.setText("FACE DETECTION");
         jButton2.setMaximumSize(new java.awt.Dimension(250, 40));
         jButton2.setMinimumSize(new java.awt.Dimension(250, 40));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -93,10 +95,10 @@ public void imgLoader2() {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(530, 310, 210, 40);
+        jButton2.setBounds(480, 301, 300, 49);
 
-        jButton3.setIcon(new javax.swing.ImageIcon("/home/xterminate/project/testing/SelfieBooth/media/Smile-recognition.png")); // NOI18N
-        jButton3.setText("Smile Recognition");
+        jButton3.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
+        jButton3.setText("SMILE RECOGNTION");
         jButton3.setMaximumSize(new java.awt.Dimension(250, 40));
         jButton3.setMinimumSize(new java.awt.Dimension(250, 40));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +107,7 @@ public void imgLoader2() {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(530, 400, 210, 40);
+        jButton3.setBounds(481, 390, 300, 50);
 
         jLabel1.setIcon(new javax.swing.ImageIcon("/home/xterminate/project/testing/SelfieBooth/media/mainmenu.jpg")); // NOI18N
         jLabel1.setText("jLabel1");
@@ -124,7 +126,7 @@ public void imgLoader2() {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         cascade = "/home/xterminate/cascades/haarcascade_smile.xml";
         this.setVisible(false);
-        new Effects().setVisible(true);// TODO add your handling code here:
+        new Capture_Screen().setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

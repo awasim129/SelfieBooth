@@ -16,12 +16,20 @@
  */
 package booth_ai;
 
+import static booth_ai.FullScreen.graphicsDevice;
+import static booth_ai.FullScreen.screenSize;
+import java.awt.Dimension;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.Window;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 /**
  *
@@ -29,15 +37,20 @@ import javax.swing.ImageIcon;
  */
 public class home extends javax.swing.JFrame {
 
+    
+    
     /**
      * Creates new form home
      */
     public home() {
         initComponents();
-        imgLoader();
+        FullScreen.show();
+        graphicsDevice.setFullScreenWindow(this);
+        jLabel2.setSize(screenSize);
+      // imgLoader();
     }
     
-    public void imgLoader() {
+ /*  public void imgLoader() {
         BufferedImage img = null;
         try {
             img = ImageIO.read(new File("/home/xterminate/project/testing/SelfieBooth/media/Continue.png"));
@@ -50,7 +63,7 @@ public class home extends javax.swing.JFrame {
         ImageIcon imgThisImg = new ImageIcon(dimg);
         jButton2.setIcon(imgThisImg);
       //  jLabel1.setLocation(500, 500);
-    }
+    }*/
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,7 +78,6 @@ public class home extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1270, 980));
         getContentPane().setLayout(null);
 
         jButton2.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
@@ -78,13 +90,15 @@ public class home extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(540, 510, 210, 40);
+        jButton2.setBounds(540, 510, 210, 50);
 
         jLabel2.setIcon(new javax.swing.ImageIcon("/home/xterminate/project/testing/SelfieBooth/media/home.jpg")); // NOI18N
         jLabel2.setText("home");
-        jLabel2.setMinimumSize(new java.awt.Dimension(1313, 1023));
+        jLabel2.setMaximumSize(new java.awt.Dimension(0, 0));
+        jLabel2.setMinimumSize(new java.awt.Dimension(0, 0));
+        jLabel2.setPreferredSize(new java.awt.Dimension(0, 0));
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 1280, 1000);
+        jLabel2.setBounds(0, 0, 0, 0);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -98,6 +112,7 @@ public class home extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -124,6 +139,7 @@ public class home extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new home().setVisible(true);
             }
         });

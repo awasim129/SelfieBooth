@@ -5,6 +5,7 @@
  */
 package booth_ai;
 
+import static booth_ai.FullScreen.graphicsDevice;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -29,7 +30,12 @@ public class Effects extends javax.swing.JFrame {
      */
     public Effects() {
         initComponents();
+        FullScreen.show();
+        graphicsDevice.setFullScreenWindow(this);
+       // jLabel2.setSize(FullScreen.screenSize);
         imgLoader();
+        
+       jLabel1.setSize(FullScreen.screenSize);
         System.out.println(System.getenv("GMAIL_USER"));
         
        }
@@ -90,14 +96,11 @@ public class Effects extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1275, 1020));
         getContentPane().setLayout(null);
 
-        jLabel1.setText("jLabel1");
-        jLabel1.setAlignmentX(0.4F);
-        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 51, 51)));
-        jLabel1.setMaximumSize(new java.awt.Dimension(70, 15));
-        jLabel1.setMinimumSize(new java.awt.Dimension(70, 15));
+        jLabel1.setAlignmentY(0.0F);
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(330, 310, 630, 450);
+        jLabel1.setBounds(340, 20, 630, 450);
 
+        applyeffect.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         applyeffect.setText("Add Effects");
         applyeffect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,8 +108,9 @@ public class Effects extends javax.swing.JFrame {
             }
         });
         getContentPane().add(applyeffect);
-        applyeffect.setBounds(390, 790, 130, 65);
+        applyeffect.setBounds(390, 790, 210, 65);
 
+        usbcpy.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         usbcpy.setText("Copy to USB");
         usbcpy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,8 +118,9 @@ public class Effects extends javax.swing.JFrame {
             }
         });
         getContentPane().add(usbcpy);
-        usbcpy.setBounds(790, 790, 140, 65);
+        usbcpy.setBounds(710, 790, 220, 65);
 
+        email.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         email.setText("Email Picture");
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,11 +128,17 @@ public class Effects extends javax.swing.JFrame {
             }
         });
         getContentPane().add(email);
-        email.setBounds(390, 870, 130, 65);
+        email.setBounds(390, 870, 210, 65);
 
+        mm.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         mm.setText("Main Menu");
+        mm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mmActionPerformed(evt);
+            }
+        });
         getContentPane().add(mm);
-        mm.setBounds(790, 870, 140, 65);
+        mm.setBounds(710, 870, 220, 65);
 
         jLabel2.setIcon(new javax.swing.ImageIcon("/home/xterminate/project/testing/SelfieBooth/media/perform.jpg")); // NOI18N
         jLabel2.setText("jLabel2");
@@ -149,6 +160,11 @@ public class Effects extends javax.swing.JFrame {
         this.setVisible(false);
         new EffectsApply().setVisible(true);
     }//GEN-LAST:event_applyeffectActionPerformed
+
+    private void mmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmActionPerformed
+        this.setVisible(false);
+        new MainMenu().setVisible(true);
+    }//GEN-LAST:event_mmActionPerformed
 
     /**
      * @param args the command line arguments

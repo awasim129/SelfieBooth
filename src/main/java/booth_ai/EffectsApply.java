@@ -5,6 +5,7 @@
  */
 package booth_ai;
 
+import static booth_ai.FullScreen.graphicsDevice;
 import com.cloudinary.Transformation;
 import com.cloudinary.utils.ObjectUtils;
 import java.awt.Image;
@@ -37,6 +38,9 @@ public class EffectsApply extends javax.swing.JFrame {
      */
     public EffectsApply() {
         initComponents();
+        FullScreen.show();
+        graphicsDevice.setFullScreenWindow(this);
+        jLabel2.setSize(FullScreen.screenSize);
         imgLoader(imgurl);
         
     }
@@ -164,7 +168,7 @@ Map  uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.empty
         sepia.setBounds(310, 740, 150, 57);
 
         redrock.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
-        redrock.setText("Red Rock");
+        redrock.setText("Grayscale");
         redrock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 redrockActionPerformed(evt);
@@ -204,8 +208,9 @@ Map  uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.empty
         primavera.setBounds(530, 820, 160, 60);
 
         jLabel1.setText("jLabel1");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 0, 51)));
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(340, 270, 600, 420);
+        jLabel1.setBounds(320, 270, 640, 420);
 
         jLabel2.setIcon(new javax.swing.ImageIcon("/home/xterminate/project/testing/SelfieBooth/media/effect.png")); // NOI18N
         jLabel2.setText("jLabel2");
@@ -226,15 +231,15 @@ Map  uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.empty
     }//GEN-LAST:event_SaveButtonActionPerformed
 
     private void redrockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redrockActionPerformed
-        convert_to("e_art:red_rock");
+        convert_to("grayscale");
     }//GEN-LAST:event_redrockActionPerformed
 
     private void incognitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incognitoActionPerformed
-        convert_to("e_art:incognito");
+        convert_to("art:incognito");
     }//GEN-LAST:event_incognitoActionPerformed
 
     private void primaveraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primaveraActionPerformed
-        convert_to("e_art:primavera");
+        convert_to("art:primavera");
     }//GEN-LAST:event_primaveraActionPerformed
 
     /**

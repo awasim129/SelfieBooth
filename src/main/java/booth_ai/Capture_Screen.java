@@ -5,6 +5,7 @@
  */
 package booth_ai;
 
+import static booth_ai.FullScreen.graphicsDevice;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.Transformation;
 import com.cloudinary.utils.ObjectUtils;
@@ -60,7 +61,12 @@ public class Capture_Screen extends javax.swing.JFrame {
      */
     public Capture_Screen() {
         initComponents();
+        FullScreen.show();
+        graphicsDevice.setFullScreenWindow(this);
+        camera.setSize(FullScreen.screenSize);
         start();
+       
+        
     }
     
     public void start() {
@@ -70,8 +76,8 @@ public class Capture_Screen extends javax.swing.JFrame {
         t.setDaemon(true);
         myThread.runnable = true;
         t.start();                 //start thrad
-        startbutton.setEnabled(false);  // deactivate start button
-        stopbutton.setEnabled(true);  //  activate stop button
+       // startbutton.setEnabled(false);  // deactivate start button
+     //   stopbutton.setEnabled(true);  //  activate stop button
     }
     
     public void newfunc() {
@@ -116,10 +122,10 @@ public class Capture_Screen extends javax.swing.JFrame {
                                 
                                 System.out.println(c);
                                 Highgui.imencode(".jpg", frame, mem);
-                                if (c>8) {
+                                if (c>13) {
                                     rectconrol = false;
                                 }
-                                if (c==10) {
+                                if (c==15) {
                                 
                                     Image im = ImageIO.read(new ByteArrayInputStream(mem.toArray()));
                                 RenderedImage ri = (RenderedImage) im;
@@ -127,8 +133,8 @@ public class Capture_Screen extends javax.swing.JFrame {
                                 File outputFile = new File("/home/xterminate/project/output/Image.jpg");
                                 ImageIO.write(ri, "jpg", outputFile);
                                 myThread.runnable = false;            // stop thread
-                                stopbutton.setEnabled(false);   // activate start button 
-                                startbutton.setEnabled(true);     // deactivate stop button
+                            //    stopbutton.setEnabled(false);   // activate start button 
+                             //   startbutton.setEnabled(true);     // deactivate stop button
                                 rectconrol=true;
                                 webSource.release();
                                 c=0;
@@ -137,7 +143,7 @@ public class Capture_Screen extends javax.swing.JFrame {
   
 
                                   System.out.println("Success");
-                                  newfunc();
+                                 newfunc();
                                 }
                             }
                             
@@ -189,8 +195,6 @@ public class Capture_Screen extends javax.swing.JFrame {
     private void initComponents() {
 
         camera = new javax.swing.JPanel();
-        startbutton = new javax.swing.JButton();
-        stopbutton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1275, 1020));
@@ -203,26 +207,12 @@ public class Capture_Screen extends javax.swing.JFrame {
         camera.setLayout(cameraLayout);
         cameraLayout.setHorizontalGroup(
             cameraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 971, Short.MAX_VALUE)
         );
         cameraLayout.setVerticalGroup(
             cameraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 467, Short.MAX_VALUE)
+            .addGap(0, 519, Short.MAX_VALUE)
         );
-
-        startbutton.setText("Start");
-        startbutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startbuttonActionPerformed(evt);
-            }
-        });
-
-        stopbutton.setText("Stop");
-        stopbutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stopbuttonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -231,50 +221,22 @@ public class Capture_Screen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(camera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(198, 198, 198)
-                .addComponent(startbutton)
-                .addGap(321, 321, 321)
-                .addComponent(stopbutton)
-                .addContainerGap(327, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(camera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(startbutton)
-                    .addComponent(stopbutton))
-                .addGap(21, 21, 21))
+            .addComponent(camera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void startbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startbuttonActionPerformed
-    
-    }//GEN-LAST:event_startbuttonActionPerformed
-
-    private void stopbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopbuttonActionPerformed
-        webSource = new VideoCapture(0); // video capture from default cam
-        myThread = new DaemonThread(); //create object of threat class
-        Thread t = new Thread(myThread);
-        t.setDaemon(true);
-        myThread.runnable = true;
-        t.start();                 //start thrad
-        stopbutton.setEnabled(false);  // deactivate start button
-        startbutton.setEnabled(true);  //  activate stop button
-        
-
-    }//GEN-LAST:event_stopbuttonActionPerformed
                         
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-         
-       System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);
+         System.out.println(System.getProperty("java.library.path"));
+      // System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);
+       
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -311,7 +273,5 @@ public class Capture_Screen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel camera;
-    private javax.swing.JButton startbutton;
-    private javax.swing.JButton stopbutton;
     // End of variables declaration//GEN-END:variables
 }

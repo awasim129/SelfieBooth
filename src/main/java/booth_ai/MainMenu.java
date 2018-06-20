@@ -82,7 +82,8 @@ public void imgLoader2() {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1270, 960));
+        setMaximumSize(new java.awt.Dimension(0, 0));
+        setSize(new java.awt.Dimension(0, 0));
         getContentPane().setLayout(null);
 
         jButton2.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
@@ -109,8 +110,11 @@ public void imgLoader2() {
         getContentPane().add(jButton3);
         jButton3.setBounds(481, 390, 300, 50);
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon("/home/xterminate/project/testing/SelfieBooth/media/mainmenu.jpg")); // NOI18N
-        jLabel1.setText("jLabel1");
+        jLabel1.setMaximumSize(new java.awt.Dimension(0, 0));
+        jLabel1.setMinimumSize(new java.awt.Dimension(0, 0));
+        jLabel1.setPreferredSize(new java.awt.Dimension(0, 0));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1330, 1020);
 

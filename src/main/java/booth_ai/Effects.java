@@ -6,7 +6,11 @@
 package booth_ai;
 
 import static booth_ai.FullScreen.graphicsDevice;
+import java.awt.Dimension;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -28,14 +32,29 @@ public class Effects extends javax.swing.JFrame {
     /**
      * Creates new form Effects
      */
+    public GraphicsDevice graphicsDevice2 = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+    public  Dimension screenSize2;
     public Effects() {
         initComponents();
-        FullScreen.show();
+        
+    
+    
+        
+        if (graphicsDevice2.isFullScreenSupported()) {
+         System.out.println("FS Exclusive Mode supported");
+      } else {
+         System.out.println("FS Exclusive Mode non supported");
+      }
+      screenSize2 = Toolkit.getDefaultToolkit().getScreenSize();
+      
+    
         graphicsDevice.setFullScreenWindow(this);
        // jLabel2.setSize(FullScreen.screenSize);
-        imgLoader();
+      
+      jLabel2.setSize(screenSize2);
+       imgLoader();
         
-       jLabel1.setSize(FullScreen.screenSize);
+       
         System.out.println(System.getenv("GMAIL_USER"));
         
        }
@@ -93,12 +112,14 @@ public class Effects extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(15, 20));
-        setMinimumSize(new java.awt.Dimension(1275, 1020));
+        setMaximumSize(new java.awt.Dimension(0, 0));
+        setSize(new java.awt.Dimension(0, 0));
         getContentPane().setLayout(null);
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setAlignmentY(0.0F);
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(340, 20, 630, 450);
+        jLabel1.setBounds(320, 120, 630, 450);
 
         applyeffect.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         applyeffect.setText("Add Effects");
@@ -108,7 +129,7 @@ public class Effects extends javax.swing.JFrame {
             }
         });
         getContentPane().add(applyeffect);
-        applyeffect.setBounds(390, 790, 210, 65);
+        applyeffect.setBounds(390, 620, 210, 65);
 
         usbcpy.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         usbcpy.setText("Copy to USB");
@@ -118,7 +139,7 @@ public class Effects extends javax.swing.JFrame {
             }
         });
         getContentPane().add(usbcpy);
-        usbcpy.setBounds(710, 790, 220, 65);
+        usbcpy.setBounds(710, 620, 220, 65);
 
         email.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         email.setText("Email Picture");
@@ -128,7 +149,7 @@ public class Effects extends javax.swing.JFrame {
             }
         });
         getContentPane().add(email);
-        email.setBounds(390, 870, 210, 65);
+        email.setBounds(390, 700, 210, 65);
 
         mm.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         mm.setText("Main Menu");
@@ -138,12 +159,15 @@ public class Effects extends javax.swing.JFrame {
             }
         });
         getContentPane().add(mm);
-        mm.setBounds(710, 870, 220, 65);
+        mm.setBounds(710, 700, 220, 65);
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon("/home/xterminate/project/testing/SelfieBooth/media/perform.jpg")); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel2.setMaximumSize(new java.awt.Dimension(0, 0));
+        jLabel2.setMinimumSize(new java.awt.Dimension(0, 0));
+        jLabel2.setPreferredSize(new java.awt.Dimension(0, 0));
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 1270, 1010);
+        jLabel2.setBounds(0, 0, 0, 0);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

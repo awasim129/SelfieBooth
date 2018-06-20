@@ -197,11 +197,17 @@ public class Capture_Screen extends javax.swing.JFrame {
         camera = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1275, 1020));
+        setMaximumSize(new java.awt.Dimension(0, 0));
+        setPreferredSize(new java.awt.Dimension(0, 0));
+        setSize(new java.awt.Dimension(0, 0));
 
         camera.setBackground(new java.awt.Color(0, 0, 0));
-        camera.setMaximumSize(new java.awt.Dimension(1366, 768));
-        camera.setMinimumSize(new java.awt.Dimension(200, 200));
+        camera.setAlignmentX(0.0F);
+        camera.setAlignmentY(0.0F);
+        camera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        camera.setMaximumSize(new java.awt.Dimension(0, 0));
+        camera.setMinimumSize(new java.awt.Dimension(0, 0));
+        camera.setPreferredSize(new java.awt.Dimension(0, 0));
 
         javax.swing.GroupLayout cameraLayout = new javax.swing.GroupLayout(camera);
         camera.setLayout(cameraLayout);
@@ -220,11 +226,11 @@ public class Capture_Screen extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(camera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(camera, javax.swing.GroupLayout.DEFAULT_SIZE, 971, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(camera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(camera, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
         );
 
         pack();

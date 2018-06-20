@@ -153,8 +153,8 @@ Map  uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.empty
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1275, 960));
-        setSize(new java.awt.Dimension(1275, 1020));
+        setMaximumSize(new java.awt.Dimension(0, 0));
+        setSize(new java.awt.Dimension(0, 0));
         getContentPane().setLayout(null);
 
         sepia.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
@@ -165,7 +165,7 @@ Map  uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.empty
             }
         });
         getContentPane().add(sepia);
-        sepia.setBounds(310, 740, 150, 57);
+        sepia.setBounds(320, 580, 150, 57);
 
         redrock.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         redrock.setText("Grayscale");
@@ -175,7 +175,7 @@ Map  uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.empty
             }
         });
         getContentPane().add(redrock);
-        redrock.setBounds(530, 740, 160, 57);
+        redrock.setBounds(540, 580, 160, 57);
 
         incognito.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         incognito.setText("Incognito");
@@ -185,7 +185,7 @@ Map  uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.empty
             }
         });
         getContentPane().add(incognito);
-        incognito.setBounds(750, 740, 170, 57);
+        incognito.setBounds(760, 580, 170, 57);
 
         SaveButton.setFont(new java.awt.Font("Purisa", 1, 18)); // NOI18N
         SaveButton.setText("Save");
@@ -195,7 +195,7 @@ Map  uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.empty
             }
         });
         getContentPane().add(SaveButton);
-        SaveButton.setBounds(560, 910, 101, 30);
+        SaveButton.setBounds(570, 740, 101, 30);
 
         primavera.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         primavera.setText("Primavera");
@@ -205,15 +205,15 @@ Map  uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.empty
             }
         });
         getContentPane().add(primavera);
-        primavera.setBounds(530, 820, 160, 60);
+        primavera.setBounds(540, 660, 160, 60);
 
-        jLabel1.setText("jLabel1");
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 0, 51)));
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(320, 270, 640, 420);
+        jLabel1.setBounds(320, 130, 640, 420);
 
         jLabel2.setIcon(new javax.swing.ImageIcon("/home/xterminate/project/testing/SelfieBooth/media/effect.png")); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel2.setMaximumSize(new java.awt.Dimension(0, 0));
+        jLabel2.setMinimumSize(new java.awt.Dimension(0, 0));
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 1240, 1000);
 

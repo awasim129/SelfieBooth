@@ -111,7 +111,7 @@ public void imgLoader2() {
         jButton3.setBounds(481, 390, 300, 50);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("/home/xterminate/project/testing/SelfieBooth/media/mainmenu.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mainmenu.jpg"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(0, 0));
         jLabel1.setMinimumSize(new java.awt.Dimension(0, 0));
         jLabel1.setPreferredSize(new java.awt.Dimension(0, 0));

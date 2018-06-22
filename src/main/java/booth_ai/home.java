@@ -93,7 +93,7 @@ public class home extends javax.swing.JFrame {
         jButton2.setBounds(540, 510, 210, 50);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("/home/xterminate/project/testing/SelfieBooth/media/home.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home.png"))); // NOI18N
         jLabel2.setMaximumSize(new java.awt.Dimension(0, 0));
         jLabel2.setMinimumSize(new java.awt.Dimension(0, 0));
         jLabel2.setPreferredSize(new java.awt.Dimension(0, 0));

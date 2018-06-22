@@ -119,7 +119,7 @@ public class Effects extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setAlignmentY(0.0F);
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(320, 120, 630, 450);
+        jLabel1.setBounds(330, 290, 630, 450);
 
         applyeffect.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         applyeffect.setText("Add Effects");
@@ -129,7 +129,7 @@ public class Effects extends javax.swing.JFrame {
             }
         });
         getContentPane().add(applyeffect);
-        applyeffect.setBounds(390, 620, 210, 65);
+        applyeffect.setBounds(400, 790, 210, 65);
 
         usbcpy.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         usbcpy.setText("Copy to USB");
@@ -139,7 +139,7 @@ public class Effects extends javax.swing.JFrame {
             }
         });
         getContentPane().add(usbcpy);
-        usbcpy.setBounds(710, 620, 220, 65);
+        usbcpy.setBounds(720, 790, 220, 65);
 
         email.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         email.setText("Email Picture");
@@ -149,7 +149,7 @@ public class Effects extends javax.swing.JFrame {
             }
         });
         getContentPane().add(email);
-        email.setBounds(390, 700, 210, 65);
+        email.setBounds(400, 870, 210, 65);
 
         mm.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         mm.setText("Main Menu");
@@ -159,10 +159,10 @@ public class Effects extends javax.swing.JFrame {
             }
         });
         getContentPane().add(mm);
-        mm.setBounds(710, 700, 220, 65);
+        mm.setBounds(720, 870, 220, 65);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("/home/xterminate/project/testing/SelfieBooth/media/perform.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/perform.jpg"))); // NOI18N
         jLabel2.setMaximumSize(new java.awt.Dimension(0, 0));
         jLabel2.setMinimumSize(new java.awt.Dimension(0, 0));
         jLabel2.setPreferredSize(new java.awt.Dimension(0, 0));

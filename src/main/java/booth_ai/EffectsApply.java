@@ -165,7 +165,7 @@ Map  uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.empty
             }
         });
         getContentPane().add(sepia);
-        sepia.setBounds(320, 580, 150, 57);
+        sepia.setBounds(330, 740, 150, 57);
 
         redrock.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         redrock.setText("Grayscale");
@@ -175,7 +175,7 @@ Map  uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.empty
             }
         });
         getContentPane().add(redrock);
-        redrock.setBounds(540, 580, 160, 57);
+        redrock.setBounds(550, 740, 160, 57);
 
         incognito.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         incognito.setText("Incognito");
@@ -185,7 +185,7 @@ Map  uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.empty
             }
         });
         getContentPane().add(incognito);
-        incognito.setBounds(760, 580, 170, 57);
+        incognito.setBounds(770, 740, 170, 57);
 
         SaveButton.setFont(new java.awt.Font("Purisa", 1, 18)); // NOI18N
         SaveButton.setText("Save");
@@ -195,7 +195,7 @@ Map  uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.empty
             }
         });
         getContentPane().add(SaveButton);
-        SaveButton.setBounds(570, 740, 101, 30);
+        SaveButton.setBounds(580, 900, 101, 30);
 
         primavera.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         primavera.setText("Primavera");
@@ -205,13 +205,13 @@ Map  uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.empty
             }
         });
         getContentPane().add(primavera);
-        primavera.setBounds(540, 660, 160, 60);
+        primavera.setBounds(550, 820, 160, 60);
 
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 0, 51)));
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(320, 130, 640, 420);
+        jLabel1.setBounds(330, 290, 640, 420);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("/home/xterminate/project/testing/SelfieBooth/media/effect.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/effect.png"))); // NOI18N
         jLabel2.setMaximumSize(new java.awt.Dimension(0, 0));
         jLabel2.setMinimumSize(new java.awt.Dimension(0, 0));
         getContentPane().add(jLabel2);

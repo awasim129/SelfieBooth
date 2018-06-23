@@ -55,14 +55,14 @@ public class Effects extends javax.swing.JFrame {
        imgLoader();
         
        
-        System.out.println(System.getenv("GMAIL_USER"));
+       
         
        }
     
     public void imgLoader() {
         BufferedImage img = null;
         try {
-            img = ImageIO.read(new File("/home/xterminate/project/output/Image.jpg"));
+            img = ImageIO.read(new File(GLOBAL_VARS.OUTPUT_FILE));
             } catch (IOException e) {
                     e.printStackTrace();
                                     }
@@ -77,7 +77,7 @@ public class Effects extends javax.swing.JFrame {
     
     public void usbcopy() {
         String[] env = {"PATH=/bin:/usr/bin/"};
-        String cmd = "sudo /home/xterminate/project/testing/usbcpy.sh";  //e.g test.sh -dparam1 -oout.txt
+        String cmd = GLOBAL_VARS.USBCPY_SCRIPT_PATH;  //e.g test.sh -dparam1 -oout.txt
         try {
             Process process = Runtime.getRuntime().exec(cmd, env);
         } catch (IOException ex) {

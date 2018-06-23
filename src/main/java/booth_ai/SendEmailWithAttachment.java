@@ -39,8 +39,8 @@ public class SendEmailWithAttachment {
     
 	public static void sendmail(String recepient)  {
 
-		final String username = "teamxterminate@gmail.com";
-		final String password = "";
+		final String username = GLOBAL_VARS.GMAIL_USERNAME;
+		final String password = GLOBAL_VARS.GMAIL_PASSWORD;
 
 		// setting gmail smtp properties
 		Properties props = new Properties();

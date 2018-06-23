@@ -122,13 +122,13 @@ public void imgLoader2() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        cascade = "/home/xterminate/cascades/lbpcascade_frontalface.xml";
+        cascade = GLOBAL_VARS.LBP_FACECASCADE;
         this.setVisible(false);
         new Capture_Screen().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        cascade = "/home/xterminate/cascades/haarcascade_smile.xml";
+        cascade = GLOBAL_VARS.HAAR_SMILECASCADE;
         this.setVisible(false);
         new Capture_Screen().setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed

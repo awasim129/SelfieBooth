@@ -21,11 +21,11 @@ package booth_ai;
  * @author xterminate
  */
 public class GLOBAL_VARS {
-    public static String LBP_FACECASCADE = "";
-    public static String HAAR_SMILECASCADE = "";
-    public static String OUTPUT_FILE = "";
-    public static String USBCPY_SCRIPT_PATH = "";
-    public static String GMAIL_USERNAME = "";
-    public static String GMAIL_PASSWORD = "";
-    
+    public static String LBP_FACECASCADE = "/home/xterminate/cascades/lbpcascade_frontalface.xml";
+    public static String HAAR_SMILECASCADE = "/home/xterminate/cascades/haarcascade_smile.xml";
+    public static String OUTPUT_FILE = "/home/xterminate/project/output/Image.jpg";
+    public static String USBCPY_SCRIPT_PATH = "sudo /home/xterminate/project/testing/usbcpy.sh";
+    public static String GMAIL_USERNAME = "teamxterminate@gmail.com";
+    public static String GMAIL_PASSWORD = "Humidity786";
+        
 }

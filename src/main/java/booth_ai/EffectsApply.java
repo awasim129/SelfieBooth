@@ -30,7 +30,6 @@ import javax.swing.ImageIcon;
  */
 public class EffectsApply extends javax.swing.JFrame {
     
-    public static String imgurl = "/home/xterminate/project/output/Image.jpg";
     public static String returnurl;
     public static String urll;
     /**
@@ -41,7 +40,7 @@ public class EffectsApply extends javax.swing.JFrame {
         FullScreen.show();
         graphicsDevice.setFullScreenWindow(this);
         jLabel2.setSize(FullScreen.screenSize);
-        imgLoader(imgurl);
+        imgLoader(GLOBAL_VARS.OUTPUT_FILE);
         
     }
 
@@ -92,7 +91,7 @@ while (-1!=(n=in.read(buf)))
 out.close();
 in.close();
 byte[] response = out.toByteArray();
-FileOutputStream fos = new FileOutputStream("/home/xterminate/project/output/Image.jpg");
+FileOutputStream fos = new FileOutputStream(GLOBAL_VARS.OUTPUT_FILE);
 fos.write(response);
 fos.close();
         } catch (MalformedURLException ex) {
@@ -111,7 +110,7 @@ fos.close();
         try {
             //Map result = effects.access.uploader().upload(new File("/home/xterminate/project/output/Image.jpg"), ObjectUtils.asMap(
               //      "transformation", new Transformation().effect("art:zorro")));
-            File toUpload = new File("/home/xterminate/project/output/Image.jpg");
+            File toUpload = new File(GLOBAL_VARS.OUTPUT_FILE);
 Map  uploadResult = effects.access.uploader().upload(toUpload, ObjectUtils.emptyMap());
             System.out.println(uploadResult);
             String tag = uploadResult.get("public_id").toString();

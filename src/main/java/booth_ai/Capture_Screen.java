@@ -130,7 +130,7 @@ public class Capture_Screen extends javax.swing.JFrame {
                                     Image im = ImageIO.read(new ByteArrayInputStream(mem.toArray()));
                                 RenderedImage ri = (RenderedImage) im;
                                 
-                                File outputFile = new File("/home/xterminate/project/output/Image.jpg");
+                                File outputFile = new File(GLOBAL_VARS.OUTPUT_FILE);
                                 ImageIO.write(ri, "jpg", outputFile);
                                 myThread.runnable = false;            // stop thread
                             //    stopbutton.setEnabled(false);   // activate start button 

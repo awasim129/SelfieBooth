@@ -75,6 +75,7 @@ public class home extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton2 = new javax.swing.JButton();
+        settings = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -92,6 +93,15 @@ public class home extends javax.swing.JFrame {
         getContentPane().add(jButton2);
         jButton2.setBounds(540, 510, 210, 50);
 
+        settings.setText("Settings");
+        settings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                settingsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(settings);
+        settings.setBounds(540, 590, 210, 40);
+
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home.png"))); // NOI18N
         jLabel2.setMaximumSize(new java.awt.Dimension(0, 0));
@@ -107,6 +117,10 @@ public class home extends javax.swing.JFrame {
         this.setVisible(false);
         new MainMenu().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void settingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsActionPerformed
+        new Settings().setVisible(true);
+    }//GEN-LAST:event_settingsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,5 +162,6 @@ public class home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton settings;
     // End of variables declaration//GEN-END:variables
 }

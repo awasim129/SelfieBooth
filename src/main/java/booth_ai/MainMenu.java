@@ -96,7 +96,7 @@ public void imgLoader2() {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(480, 301, 300, 49);
+        jButton2.setBounds(480, 370, 300, 49);
 
         jButton3.setFont(new java.awt.Font("Purisa", 1, 22)); // NOI18N
         jButton3.setText("SMILE RECOGNTION");
@@ -108,7 +108,7 @@ public void imgLoader2() {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(481, 390, 300, 50);
+        jButton3.setBounds(480, 450, 300, 50);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mainmenu.jpg"))); // NOI18N
@@ -116,13 +116,15 @@ public void imgLoader2() {
         jLabel1.setMinimumSize(new java.awt.Dimension(0, 0));
         jLabel1.setPreferredSize(new java.awt.Dimension(0, 0));
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 1330, 1020);
+        jLabel1.setBounds(-20, 0, 1330, 1020);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        cascade = GLOBAL_VARS.LBP_FACECASCADE;
+           cascade = GLOBAL_VARS.LBP_FACECASCADE;
+           System.out.println(cascade);
+          //  cascade = "/home/xterminate/cascades/haarcascade_frontalface_default.xml";
         this.setVisible(false);
         new Capture_Screen().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed

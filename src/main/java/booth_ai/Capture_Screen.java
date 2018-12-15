@@ -122,10 +122,10 @@ public class Capture_Screen extends javax.swing.JFrame {
                                 
                                 System.out.println(c);
                                 Highgui.imencode(".jpg", frame, mem);
-                                if (c>13) {
+                                if (c>28) {
                                     rectconrol = false;
                                 }
-                                if (c==15) {
+                                if (c==30) {
                                 
                                     Image im = ImageIO.read(new ByteArrayInputStream(mem.toArray()));
                                 RenderedImage ri = (RenderedImage) im;
@@ -239,8 +239,9 @@ public class Capture_Screen extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-         System.out.println(System.getProperty("java.library.path"));
-      // System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);
+  
+         System.out.println("Blah" +System.getProperty("java.library.path"));
+       //System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);
        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

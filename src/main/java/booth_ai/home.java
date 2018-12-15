@@ -77,6 +77,8 @@ public class home extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         settings = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -109,6 +111,14 @@ public class home extends javax.swing.JFrame {
         jLabel2.setPreferredSize(new java.awt.Dimension(0, 0));
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 0, 0);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Credit = 99999");
+        jScrollPane1.setViewportView(jTextArea1);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(540, 690, 200, 60);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -162,6 +172,8 @@ public class home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton settings;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,12 +6,14 @@
 package booth_ai;
 
 import static booth_ai.FullScreen.graphicsDevice;
+import com.lowagie.text.DocumentException;
 import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
+import java.awt.print.PrinterException;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -108,6 +110,7 @@ public class Effects extends javax.swing.JFrame {
         usbcpy = new javax.swing.JButton();
         email = new javax.swing.JButton();
         mm = new javax.swing.JButton();
+        print = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -161,6 +164,15 @@ public class Effects extends javax.swing.JFrame {
         getContentPane().add(mm);
         mm.setBounds(720, 870, 220, 65);
 
+        print.setText("Print");
+        print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printActionPerformed(evt);
+            }
+        });
+        getContentPane().add(print);
+        print.setBounds(970, 810, 180, 80);
+
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/perform.jpg"))); // NOI18N
         jLabel2.setMaximumSize(new java.awt.Dimension(0, 0));
@@ -189,6 +201,18 @@ public class Effects extends javax.swing.JFrame {
         this.setVisible(false);
         new MainMenu().setVisible(true);
     }//GEN-LAST:event_mmActionPerformed
+
+    private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
+        try {
+            Printer.print();
+        } catch (DocumentException ex) {
+            Logger.getLogger(Effects.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Effects.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (PrinterException ex) {
+            Logger.getLogger(Effects.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_printActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,6 +256,7 @@ public class Effects extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton mm;
+    private javax.swing.JButton print;
     private javax.swing.JButton usbcpy;
     // End of variables declaration//GEN-END:variables
 }

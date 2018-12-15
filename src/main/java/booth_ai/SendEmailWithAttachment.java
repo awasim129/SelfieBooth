@@ -76,7 +76,7 @@ public class SendEmailWithAttachment {
 
 			// attach the file
 			MimeBodyPart mimeBodyPart = new MimeBodyPart();
-			mimeBodyPart.attachFile(new File("/home/xterminate/project/output/Image.jpg"));
+			mimeBodyPart.attachFile(new File(GLOBAL_VARS.OUTPUT_FILE));
 			multipart.addBodyPart(mimeBodyPart);
 
 			message.setContent(multipart);
